@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using IdentityServer4.AccessTokenValidation;
+using IdentityServer4.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -7,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Text;
 
 namespace TechCommunity.Api
@@ -32,9 +36,10 @@ namespace TechCommunity.Api
                 {
                     options.Authority = "http://localhost:5000";
                     options.RequireHttpsMetadata = false;
-
                     options.ApiName = "api1";
                 });
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +49,10 @@ namespace TechCommunity.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(op => op.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+
+            app.UseAuthentication();
 
             app.UseMvc();
         }

@@ -14,4 +14,8 @@ export const techcommunitystore =  {
 };
 
 const { commit, read, dispatch } = 
-getStoreAccessors<TechCommunityState, State>('techcommunitystore');
+getStoreAccessors<TechCommunityState, State>('TechCommunityStore');
+
+export const getConfiguration = read(getters.getConfiguration);
+
+export const dispatchFetchValues = dispatch(actions.fetchValues);

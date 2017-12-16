@@ -7,4 +7,5 @@ export interface Ihttp {
     post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<T>;
     put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<T>;
     patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<T>;
+    setDefaultHeader(key: string, value: string): void;
 }
