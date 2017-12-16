@@ -1,23 +1,32 @@
 import Vue from 'vue';
 import VueRouter, { Location, Route, RouteConfig } from 'vue-router';
 import { makeHot, reload } from './util/hot-reload';
-
-const homeComponent = () => import('./components/home').then(({ HomeComponent }) => HomeComponent);
-
-if (process.env.ENV === 'development' && module.hot) {
-  const homeModuleId = './components/home';
-
-  makeHot(homeModuleId, homeComponent,
-    module.hot.accept('./components/home', () => reload(homeModuleId, (<any>require('./components/home')).HomeComponent)));
-}
+import { SignInOidcComponent } from './components/oidc/signin-oidc/signin-oidc';
+import { SignOutOidcComponent } from './components/oidc/signout-oidc/signout-oidc';
+import { HomeComponent } from './components/home/home';
 
 Vue.use(VueRouter);
 
 export const createRoutes: () => RouteConfig[] = () => [
   {
     path: '/',
-    component: homeComponent,
+    component: HomeComponent,
+  },
+  {
+    path: '/signin-oidc',
+    component: SignInOidcComponent
+  },
+  {
+    path: '/signout-oidc',
+    component: SignOutOidcComponent
   }
 ];
 
-export const createRouter = () => new VueRouter({ mode: 'history', routes: createRoutes() });
+export const createRouter = () => {
+    let router = new VueRouter({ mode: 'history', routes: createRoutes() });
+
+    router.beforeEach((to: Route, from: Route, next) => {
+        next();
+    });
+    return router;
+};

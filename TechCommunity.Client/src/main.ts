@@ -6,20 +6,20 @@ import Vuex from 'vuex';
 import { createStore } from './store';
 
 const appComponent = () => import('./components/app').then(({ AppComponent }) => AppComponent);
-const navbarComponent = () => import('./components/navbar').then(({ NavbarComponent }) => NavbarComponent);
+const navbarComponent = () => import('./components/common/navbar').then(({ NavbarComponent }) => NavbarComponent);
 
 import './sass/main.scss';
 import { AppComponent } from './components/app';
 
 if (process.env.ENV === 'development' && module.hot) {
   const appModuleId = './components/app';
-  const navBarId = './components/navbar';
+  const navBarId = './components/common/navbar';
 
   makeHot(appModuleId, appComponent,
     module.hot.accept('./components/app', () => reload(appModuleId, (<any>require('./components/app')).AppComponent)));
 
   makeHot(navBarId, navbarComponent,
-    module.hot.accept('./components/navbar', () => reload(navBarId, (<any>require('./components/navbar')).AppComponent)));
+    module.hot.accept('./components/common/navbar', () => reload(navBarId, (<any>require('./components/common/navbar')).AppComponent)));
 }
 
 Vue.use(Vuex);

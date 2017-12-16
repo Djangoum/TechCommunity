@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { injectable } from 'inversify';
+import axios from 'axios';
 import { Ihttp } from './Ihttp';
 
 @injectable()
@@ -10,4 +10,7 @@ export class Http implements Ihttp {
     head = axios.head;
     put = axios.put;
     patch = axios.patch;
+    setDefaultHeader (key, value) {
+        axios.defaults.headers.common[key] = value;
+    }
 }
