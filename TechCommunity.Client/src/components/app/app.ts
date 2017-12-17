@@ -15,7 +15,7 @@ import { Http } from '../../util/http';
       }
 })
 export class AppComponent extends Vue {
-    async mounted() {
+    async beforeMount() {
         let user = await dispatchGetCurrentUser(this.$store);
 
         if (user !== null) {

@@ -4,6 +4,7 @@ import { makeHot, reload } from './util/hot-reload';
 import { SignInOidcComponent } from './components/oidc/signin-oidc/signin-oidc';
 import { SignOutOidcComponent } from './components/oidc/signout-oidc/signout-oidc';
 import { HomeComponent } from './components/home/home';
+import { getCurrentUser, dispatchChallengeToken } from './store/system/index';
 
 Vue.use(VueRouter);
 
@@ -23,10 +24,11 @@ export const createRoutes: () => RouteConfig[] = () => [
 ];
 
 export const createRouter = () => {
-    let router = new VueRouter({ mode: 'history', routes: createRoutes() });
+    let router = new VueRouter({ mode: 'history', routes: createRoutes() });   
 
     router.beforeEach((to: Route, from: Route, next) => {
-        next();
+      next();
     });
+    
     return router;
 };
