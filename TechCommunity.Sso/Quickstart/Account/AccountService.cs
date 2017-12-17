@@ -20,8 +20,7 @@ namespace IdentityServer4.Quickstart.UI
 
         public AccountService(
             IIdentityServerInteractionService interaction,
-            IHttpContextAccessor httpContextAccessor,
-            IAuthenticationSchemeProvider schemeProvider)
+            IHttpContextAccessor httpContextAccessor)
         {
             _interaction = interaction;
             _httpContextAccessor = httpContextAccessor;

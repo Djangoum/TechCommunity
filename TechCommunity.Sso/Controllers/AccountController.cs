@@ -49,7 +49,7 @@ namespace TechCommunity.Sso.Controllers
             _logger = logger;
 
             _interaction = interaction;
-            _account = new AccountService(interaction, httpContextAccessor, schemeProvider, clientStore);
+            _account = new AccountService(interaction, httpContextAccessor);
         }
 
         [TempData]
