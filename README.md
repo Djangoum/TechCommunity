@@ -1,1 +1,2 @@
 # TechCommunity
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/48be4918540646048a5a3d8e7c19e652)](https://www.codacy.com/app/arielamorgarcia/TechCommunity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Djangoum/TechCommunity&amp;utm_campaign=Badge_Grade)
