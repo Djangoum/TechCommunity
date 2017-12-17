@@ -6,9 +6,13 @@ using System;
 
 namespace IdentityServer4.Quickstart.UI
 {
-    public class AccountOptions
+    public static class AccountOptions
     {
-        public static bool ShowLogoutPrompt = true;
-        public static bool AutomaticRedirectAfterSignOut = false;
+        private static bool showLogoutPrompt = true;
+        public static bool ShowLogoutPrompt { get => showLogoutPrompt; set => showLogoutPrompt = value; }
+
+        public static bool AutomaticRedirectAfterSignOut { get => automaticRedirectAfterSignOut; set => automaticRedirectAfterSignOut = value; }
+
+        private static bool automaticRedirectAfterSignOut;
     }
 }
