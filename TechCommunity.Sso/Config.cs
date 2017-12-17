@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TechCommunity.Sso
 {
-    public class Config
+    public static class Config
     {
         // scopes define the resources in your system
         public static IEnumerable<IdentityResource> GetIdentityResources()
