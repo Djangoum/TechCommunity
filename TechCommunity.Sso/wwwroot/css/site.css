@@ -52,3 +52,8 @@ div.container.body-content div.col-md-4 {
     border-radius: 7px;
     margin-top: 10%;
 }
+
+div.container.body-content div.col-md-6 {
+    margin-top:10%;
+    font-weight:lighter;
+}
