@@ -14,7 +14,7 @@ export class HomeComponent extends BaseComponent {
         super();       
     }
 
-    output:string = '';
+    output: string = '';
 
     protected async register() {
         let result = await dispatchGetCurrentUser(this.$store);       
