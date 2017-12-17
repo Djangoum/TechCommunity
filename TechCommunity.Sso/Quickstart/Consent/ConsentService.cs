@@ -101,7 +101,7 @@ namespace IdentityServer4.Quickstart.UI
                     var resources = await _resourceStore.FindEnabledResourcesByScopeAsync(request.ScopesRequested);
                     if (resources != null && (resources.IdentityResources.Any() || resources.ApiResources.Any()))
                     {
-                        return CreateConsentViewModel(model, returnUrl, request, client, resources);
+                        return CreateConsentViewModel(model, returnUrl, client, resources);
                     }
                     else
                     {
@@ -123,7 +123,6 @@ namespace IdentityServer4.Quickstart.UI
 
         private ConsentViewModel CreateConsentViewModel(
             ConsentInputModel model, string returnUrl, 
-            AuthorizationRequest request, 
             Client client, Resources resources)
         {
             var vm = new ConsentViewModel();
@@ -141,7 +140,7 @@ namespace IdentityServer4.Quickstart.UI
             vm.ResourceScopes = resources.ApiResources.SelectMany(x => x.Scopes).Select(x => CreateScopeViewModel(x, vm.ScopesConsented.Contains(x.Name) || model == null)).ToArray();
             if (ConsentOptions.EnableOfflineAccess && resources.OfflineAccess)
             {
-                vm.ResourceScopes = vm.ResourceScopes.Union(new ScopeViewModel[] {
+                vm.ResourceScopes = vm.ResourceScopes.Union(new [] {
                     GetOfflineAccessScope(vm.ScopesConsented.Contains(IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null)
                 });
             }
