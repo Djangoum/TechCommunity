@@ -14,8 +14,15 @@ export const systemstore =  {
 };
 
 const { commit, read, dispatch } =
-getStoreAccessors<SystemState, State>('system');
+getStoreAccessors<SystemState, State>('SystemStore');
 
 export const dispatchChallengeToken = dispatch(actions.challengeToken);
+export const dispatchLogout = dispatch(actions.logout);
+export const dispatchSigninCallback = dispatch(actions.receiveSigninCallback);
+export const dispatchSignoutCallback = dispatch(actions.receiveSignoutCallback);
+export const dispatchGetCurrentUser = dispatch(actions.getCurrentUser);
 
-export const mutateToken = commit(mutations.setToken);
+export const mutateUser = commit(mutations.setUser);
+
+export const getOidcConfiguration = read(getters.getOidcConfiguration);
+export const getCurrentUser = read(getters.getCurrentUser);

@@ -1,5 +1,7 @@
+import { User } from 'oidc-client';
+
 export class SystemState {
     constructor() { }
 
-    public token: string;
+    public user: User = null;
 }

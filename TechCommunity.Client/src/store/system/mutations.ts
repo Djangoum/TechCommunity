@@ -1,7 +1,8 @@
 import { SystemState } from './state';
+import { User } from 'oidc-client';
 
 export default {
-    setToken(state: SystemState, token: string) {
-        state.token = token;
+    setUser(state: SystemState, user: User) {
+        state.user = user;
     }
 };
